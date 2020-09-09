@@ -6,7 +6,7 @@ const AppNavbar = () => {
     <div>
       <Navbar bg='light' variant='light' expand='sm' className='mb-5'>
         <Container>
-          <Navbar.Brand>Navbar</Navbar.Brand>
+          <Navbar.Brand>Navigasi</Navbar.Brand>
         </Container>
       </Navbar>
     </div>

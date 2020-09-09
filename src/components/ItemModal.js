@@ -3,20 +3,27 @@ import { Button, Modal, Form } from 'react-bootstrap';
 
 const ItemModal = () => {
   const [show, setShow] = useState(false);
-  const [section, setSection] = useState({
-    section: '',
-    classRoom: '',
-    classZoom: '',
+  const [kelas, setKelas] = useState({
+    namaKelas: '',
+    ruangKelas: '',
+    zoomKelas: '',
   });
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const { namaKelas, ruangKelas, zoomKelas } = kelas;
+
   const handleChange = (e) =>
-    setSection({
-      ...section,
+    setKelas({
+      ...kelas,
       [e.target.name]: e.target.value,
     });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(kelas);
+  };
 
   return (
     <Fragment>
@@ -25,21 +32,47 @@ const ItemModal = () => {
         style={{ marginBottom: '2rem' }}
         onClick={handleShow}
       >
-        Add Class
+        Buat Kelas
       </Button>
-      <Modal show={show} onClick={handleClose}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop='static'
+        keyboard={false}
+        centered
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Class Details</Modal.Title>
+          <Modal.Title>Detail Kelas</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group>
-              <Form.Label>Class Name</Form.Label>
+              <Form.Label>Nama Kelas</Form.Label>
               <Form.Control
                 type='text'
-                name='section'
-                value={section}
-                placeholder='ex: Physics'
+                name='namaKelas'
+                value={namaKelas}
+                placeholder='contoh: Fisika'
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Ruang Kelas</Form.Label>
+              <Form.Control
+                type='text'
+                name='ruangKelas'
+                value={ruangKelas}
+                placeholder='link Google Classroom'
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Interaksi Kelas</Form.Label>
+              <Form.Control
+                type='text'
+                name='zoomKelas'
+                value={zoomKelas}
+                placeholder='link Zoom'
                 onChange={handleChange}
               />
             </Form.Group>
@@ -47,10 +80,10 @@ const ItemModal = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={handleClose}>
-            Close
+            Tutup
           </Button>
-          <Button variant='primary' onClick={handleClose}>
-            Save Changes
+          <Button variant='primary' onClick={handleSubmit}>
+            Buat Kelas
           </Button>
         </Modal.Footer>
       </Modal>
