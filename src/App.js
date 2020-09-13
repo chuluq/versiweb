@@ -1,19 +1,23 @@
 import React, { Fragment } from 'react';
-import AppNavbar from './components/AppNavbar';
-import ItemModal from './components/ItemModal';
+import AppNavbar from './components/layout/AppNavbar';
+import Home from './components/pages/Home';
 
 import { Container } from 'react-bootstrap';
+
+import KelasState from './context/kelas/KelasState';
 
 import './App.css';
 
 function App() {
   return (
-    <Fragment>
-      <AppNavbar />
-      <Container>
-        <ItemModal />
-      </Container>
-    </Fragment>
+    <KelasState>
+      <Fragment>
+        <AppNavbar />
+        <Container>
+          <Home />
+        </Container>
+      </Fragment>
+    </KelasState>
   );
 }
 

@@ -1,7 +1,13 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
+import KelasItem from '../kelas/KelasItem';
+import KelasContext from '../../context/kelas/kelasContext';
+
 import { Button, Modal, Form } from 'react-bootstrap';
 
-const ItemModal = () => {
+const Kelas = () => {
+  const kelasContext = useContext(KelasContext);
+  const { kelass, addKelas } = kelasContext;
+
   const [show, setShow] = useState(false);
   const [kelas, setKelas] = useState({
     namaKelas: '',
@@ -22,12 +28,12 @@ const ItemModal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(kelas);
+    addKelas(kelas);
   };
 
   return (
     <Fragment>
-      <Button
+      {/* <Button
         variant='primary'
         style={{ marginBottom: '2rem' }}
         onClick={handleShow}
@@ -79,16 +85,23 @@ const ItemModal = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
+          <Button variant='outline-secondary' onClick={handleClose}>
             Tutup
           </Button>
-          <Button variant='primary' onClick={handleSubmit}>
+          <Button
+            variant='outline-primary'
+            type='submit'
+            onClick={handleSubmit}
+          >
             Buat Kelas
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
+      {kelass.map((kelas) => (
+        <KelasItem key={kelas.id} kelas={kelas} />
+      ))}
     </Fragment>
   );
 };
 
-export default ItemModal;
+export default Kelas;
