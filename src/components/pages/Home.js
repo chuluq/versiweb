@@ -1,8 +1,8 @@
 import React from 'react';
-import Kelas from '../kelas/Kelas';
+import KelasForm from '../kelas/KelasForm';
 
 const Home = () => {
-  return <Kelas />;
+  return <KelasForm />;
 };
 
 export default Home;

@@ -12,19 +12,19 @@ const KelasState = (props) => {
         id: 1,
         namaKelas: 'Matematika',
         ruangKelas: 'http://classroom.google.com',
-        zoomKelas: 'http://zoom.com',
+        zoomKelas: 'http://zoom.us',
       },
       {
         id: 2,
         namaKelas: 'Fisika',
         ruangKelas: 'http://classroom.google.com',
-        zoomKelas: 'http://zoom.com',
+        zoomKelas: 'http://zoom.us',
       },
       {
         id: 3,
         namaKelas: 'Kimia',
         ruangKelas: 'http://classroom.google.com',
-        zoomKelas: 'http://zoom.com',
+        zoomKelas: 'http://zoom.us',
       },
     ],
   };
